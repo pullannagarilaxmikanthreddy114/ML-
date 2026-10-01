@@ -1,0 +1,2 @@
+Project,Best Model,Training Rows,Validation Rows,Test Rows,Test MAE,Test RMSE,Test R2 Score,Features Used
+Parking Space Availability Prediction,Extra Trees Regressor,24779,5310,5310,27.642978,70.938246,0.991116,11
