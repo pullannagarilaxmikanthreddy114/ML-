@@ -1,0 +1,13 @@
+{
+    "SystemCodeNumber": "BHMNCPNST01",
+    "Capacity": 485,
+    "Hour": 15,
+    "Day": 8,
+    "Month": 12,
+    "DayOfWeek": "Thursday",
+    "IsWeekend": 0,
+    "Previous_Availability": 164,
+    "Lag_2_Availability": 162,
+    "Lag_3_Availability": 145,
+    "Rolling_Average_Availability": 157
+}
