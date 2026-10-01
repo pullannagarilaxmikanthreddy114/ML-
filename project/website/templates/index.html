@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking Availability AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header class="navbar">
+  <h2>Parking Availability AI</h2>
+  <nav>
+    <button class="nav-btn active" data-tab="predictor">Predictor</button>
+    <button class="nav-btn" data-tab="analytics">Analytics</button>
+    <button class="nav-btn" data-tab="metrics">Metrics</button>
+  </nav>
+</header>
+<main class="container">
+  <section id="predictor" class="tab-pane active">
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Live Parking Space Predictor</h3>
+        <form id="form-predict">
+          <label>Parking Location<select id="select-location"></select></label>
+          <div class="grid grid-2">
+            <label>Capacity<input id="input-capacity" type="number" value="485" min="1"></label>
+            <label>Day of Week<select id="select-dow">
+              <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+              <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+            </select></label>
+          </div>
+          <div class="grid grid-2">
+            <label>Hour<input id="input-hour" type="number" value="15" min="0" max="23"></label>
+            <label>Day<input id="input-day" type="number" value="15" min="1" max="31"></label>
+          </div>
+          <label>Month<input id="input-month" type="number" value="10" min="1" max="12"></label>
+          <label>Previous Availability<input id="input-prev" type="number" value="164" min="0"></label>
+          <label>Availability 30m Ago<input id="input-lag2" type="number" value="162" min="0"></label>
+          <label>Availability 45m Ago<input id="input-lag3" type="number" value="145" min="0"></label>
+          <label>Recent Average Availability<input id="input-roll" type="number" value="157" min="0"></label>
+          <button id="btn-submit" type="submit">Predict Available Spaces</button>
+        </form>
+      </div>
+      <div class="card result-card">
+        <p>Predicted Free Spaces</p>
+        <div id="res-available" class="result-number">--</div>
+        <p id="res-badge">Calculating...</p>
+        <div class="grid grid-2">
+          <div><b id="res-capacity">--</b><span>Capacity</span></div>
+          <div><b id="res-occupied">--</b><span>Occupied</span></div>
+          <div><b id="res-occ-pct">--</b><span>Occupancy %</span></div>
+          <div><b id="res-avail-pct">--</b><span>Available %</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="analytics" class="tab-pane">
+    <div class="grid grid-2">
+      <div class="card"><h3>Hourly Occupancy Trend</h3><canvas id="chart-hourly"></canvas></div>
+      <div class="card"><h3>Busiest Parking Locations</h3><canvas id="chart-busy"></canvas></div>
+      <div class="card"><h3>Occupancy Distribution</h3><canvas id="chart-dist"></canvas></div>
+      <div class="card"><h3>Actual vs Predicted</h3><canvas id="chart-actual-vs-pred"></canvas></div>
+    </div>
+  </section>
+  <section id="metrics" class="tab-pane">
+    <div class="card">
+      <h3>Model Comparison</h3>
+      <div id="metrics-output">Loading metrics...</div>
+      <canvas id="chart-models"></canvas>
+      <canvas id="chart-features"></canvas>
+    </div>
+  </section>
+</main>
+<footer>Parking Availability Prediction System · Flask ML API</footer>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
